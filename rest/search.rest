@@ -1,0 +1,22 @@
+### Get the credits for a movie, the id is a tmdb movie id
+### http://localhost:3000/getMediaCredits/:type/:id/:page
+GET http://localhost:3000/getMediaCredits/0/11
+
+### Get the credits for a movie, the id is a tmdb movie id
+### http://localhost:3000/getMediaCredits/:type/:id/:page
+GET http://localhost:3000/getMediaReviews/0/11/1
+
+### Person
+GET http://localhost:3000/getPerson/2583875
+
+### Id's
+GET http://localhost:3000/getMoviePageData/0/11
+### Id's
+POST http://localhost:3000/getMoviePageData HTTP/1.1
+content-type: application/json
+
+{
+    "mediaID": "11",
+    "mediaType": 0
+}
+

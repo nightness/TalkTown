@@ -1,0 +1,26 @@
+##############################################################################################
+### Fetch Image
+### https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png
+GET http://localhost:3000/getImage/?url=https%3A%2F%2Fwww.google.com%2Fimages%2Fbranding%2Fgooglelogo%2F2x%2Fgooglelogo_color_272x92dp.png HTTP/1.1
+
+##############################################################################################
+### Fetch Facebook Image (normal)
+GET https://graph.facebook.com/10222039826531572/picture HTTP/1.1
+
+
+### Fetch Facebook Image (cached)
+GET http://localhost:3000/getImage/?url=https%3A%2F%2Fgraph.facebook.com%2F10222039826531572%2Fpicture HTTP/1.1
+
+##############################################################################################
+### Fetch Image (normal)
+https://images.pexels.com/photos/3559235/pexels-photo-3559235.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260 HTTP/1.1
+
+### Fetch Image (cached)
+GET http://localhost:3000/getImage/?url=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F3559235%2Fpexels-photo-3559235.jpeg%3Fauto%3Dcompress%26cs%3Dtinysrgb%26h%3D750%26w%3D1260 HTTP/1.1
+
+##############################################################################################
+### Fetch Image (normal)
+https://th.bing.com/th/id/OIP.0oBqGT4BrtxbWvx4xC2iogHaGs?pid=ImgDet&rs=1 HTTP/1.1
+
+### Fetch Image (cached)
+GET http://localhost:3000/getImage/?url=https%3A%2F%2Fth.bing.com%2Fth%2Fid%2FOIP.0oBqGT4BrtxbWvx4xC2iogHaGs%3Fpid%3DImgDet%26rs%3D1 HTTP/1.1

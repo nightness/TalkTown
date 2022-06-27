@@ -1,0 +1,67 @@
+{
+	"name": "TalkTown",
+	"displayName": "Talk Town",
+	"plugins": [
+		"expo-tracking-transparency"
+	],
+	"expo": {
+		"name": "talktown",
+		"slug": "talktown",
+		"version": "1.0.0",
+		"extra": {},
+		"privacy": "unlisted",
+		"orientation": "portrait",
+		"icon": "./assets/images/favicon.png",
+		"scheme": "talktown",
+		"splash": {
+			"image": "./assets/images/splash.png",
+			"resizeMode": "contain",
+			"backgroundColor": "#ffffff"
+		},
+		"updates": {
+			"fallbackToCacheTimeout": 0
+		},
+		"assetBundlePatterns": [
+			"**/*"
+		],
+		"ios": {
+			"supportsTablet": true,
+			"bundleIdentifier": "com.nightness.talktown",
+			"requireFullScreen": true,
+			"googleServicesFile": "./GoogleService-Info.plist",
+			"infoPlist": {
+				"NSUserTrackingUsageDescription": "We use Tracking to fix bugs and improve your experience."
+			},
+			"config": {
+				"googleMapsApiKey": "KEY_PLEASE"
+			}
+		},
+		"android": {
+			"package": "com.nightness.talktown",
+			"versionCode": 1,
+			"adaptiveIcon": {
+				"foregroundImage": "./assets/images/favicon.png",
+				"backgroundColor": "#FFFFFF"
+			},
+			"googleServicesFile": "./google-services.json",
+			"intentFilters": [
+				{
+					"action": "VIEW",
+					"data": [
+						{
+							"scheme": "app",
+							"host": "cloud-lightning.web.app"
+						}
+					],
+					"category": [
+						"BROWSABLE",
+						"DEFAULT"
+					]
+				}
+			]
+		},
+		"web": {
+			"favicon": "./assets/images/favicon.png"
+		}
+	}
+}

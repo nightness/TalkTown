@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="%LANG_ISO_CODE%">
+	<title>TalkTown.live</title>
+	<head>
+		<meta charset="utf-8" />
+		<meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+		<!-- 
+      This viewport works for phones with notches.
+      It's optimized for gestures by disabling global zoom.
+     -->
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1.00001, viewport-fit=cover"
+		/>
+
+		<meta property="og:site_name" content="TvPal" />
+		<meta
+			property="og:title"
+			content="Title"
+		/>
+		<meta
+			property="og:description"
+			content="Description"
+		/>
+		<meta property="og:url" content="https://www.tvpal.com/tvpal_intro.png" />
+		<meta property="og:type" content="website" />
+
+		<meta property="og:image" content="https://www.tvpal.com/tvpal_intro.png" />
+		<meta property="og:image:secure_url" content="https://www.tvpal.com/tvpal_intro.png" />
+		<meta property="og:image:width" content="846" />
+		<meta property="og:image:height" content="415" />
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:image" content="https://www.tvpal.com/tvpal_intro.png" />
+		<meta property="twitter:site" content="@tvpal1" />
+
+		<style>
+			/**
+       * Extend the react-native-web reset:
+       * https://github.com/necolas/react-native-web/blob/master/packages/react-native-web/src/exports/StyleSheet/initialRules.js
+       */
+			html,
+			body,
+			#root {
+				width: 100%;
+				/* To smooth any scrolling behavior */
+				-webkit-overflow-scrolling: touch;
+				margin: 0px;
+				padding: 0px;
+				/* Allows content to fill the viewport and go beyond the bottom */
+				min-height: 100%;
+				background-color: #100e15;
+				/* width */
+				flex-shrink: 0;
+				flex-basis: auto;
+				flex-grow: 1;
+				display: flex;
+				flex: 1;
+			}
+
+			html {
+				--scrollbar-thickness: 8px;
+				--scrollbar-border-radius: 4px;
+				--scrollbar-track-color: #222;
+				--scrollbar-thumb-color: #aaa;
+				--scrollbar-thumb-hover-color: #ddd;
+			}
+
+			/* width */
+			::-webkit-scrollbar {
+				width: var(--scrollbar-thickness);
+				height: var(--scrollbar-thickness);
+				border-radius: var(--scrollbar-border-radius);
+			}
+
+			/* Track */
+			::-webkit-scrollbar-track {
+				background: var(--scrollbar-track-color);
+				border-radius: var(--scrollbar-border-radius);
+			}
+
+			/* Thumb */
+			::-webkit-scrollbar-thumb {
+				background: var(--scrollbar-thumb-color);
+				border-radius: var(--scrollbar-border-radius);
+			}
+
+			/* Thumb on hover */
+			::-webkit-scrollbar-thumb:hover {
+				background: var(--scrollbar-thumb-hover-color);
+				border-radius: var(--scrollbar-border-radius);
+			}
+
+			html {
+				scroll-behavior: smooth;
+				/* Prevent text size change on orientation change https://gist.github.com/tfausak/2222823#file-ios-8-web-app-html-L138 */
+				-webkit-text-size-adjust: 100%;
+				height: calc(100% + env(safe-area-inset-top));
+			}
+
+			body {
+				display: flex;
+				/* Allows you to scroll below the viewport; default value is visible */
+				overflow-y: auto;
+				overscroll-behavior-y: none;
+				text-rendering: optimizeLegibility;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+				-ms-overflow-style: scrollbar;
+			}
+			/* Enable for apps that support dark-theme */
+			/*@media (prefers-color-scheme: dark) {
+        body {
+          background-color: black;
+        }
+      }*/
+		</style>
+	</head>
+
+	<body>
+		<!-- 
+      A generic no script element with a reload button and a message.
+      Feel free to customize this however you'd like.
+    -->
+		<noscript>
+			<form
+				action=""
+				style="background-color: #fff; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 9999"
+			>
+				<div style="font-size: 18px; font-family: Helvetica, sans-serif; line-height: 24px; margin: 10%; width: 80%">
+					<p>Oh no! It looks like JavaScript is not enabled in your browser.</p>
+					<p style="margin: 20px 0">
+						<button
+							type="submit"
+							style="
+								background-color: #4630eb;
+								border-radius: 100px;
+								border: none;
+								box-shadow: none;
+								color: #fff;
+								cursor: pointer;
+								font-weight: bold;
+								line-height: 20px;
+								padding: 6px 16px;
+							"
+						>
+							Reload
+						</button>
+					</p>
+				</div>
+			</form>
+		</noscript>
+		<!-- The root element for your Expo app. -->
+		<div id="root"></div>
+	</body>
+</html>

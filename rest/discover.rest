@@ -1,0 +1,5 @@
+### Discover Movies
+GET http://localhost:3000/discover/0 HTTP/1.1
+
+### Discover TV
+GET http://localhost:3000/discover/1 HTTP/1.1
