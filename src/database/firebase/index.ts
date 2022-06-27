@@ -7,10 +7,14 @@ import {
 	signInWithEmailAndPassword, signInWithRedirect, signOut, User as FirebaseUser
 } from 'firebase/auth';
 import {
+	collection, doc, getDoc,
+	query,
+	CollectionReference, DocumentReference,
 	DocumentChange,
 	DocumentData,
-	DocumentSnapshot, getFirestore, QueryDocumentSnapshot, QuerySnapshot, serverTimestamp, Timestamp
+	DocumentSnapshot, getFirestore, QueryDocumentSnapshot, QuerySnapshot, serverTimestamp, Timestamp, orderBy, limitToLast, startAt, QueryConstraint, getDocs, Query
 } from 'firebase/firestore';
+import { getFunctions, httpsCallable } from 'firebase/functions';
 import * as FirebaseAuth from 'react-firebase-hooks/auth';
 import * as FirebaseFirestore from 'react-firebase-hooks/firestore';
 import { firebaseConfig } from '../FirebaseConfig';
@@ -100,8 +104,7 @@ export const useAuthState = () => FirebaseAuth.useAuthState(getAuth(getApp()));
 
 
 
-// @ts-expect-error
-export const getCollection = (collectionPath: string) => getFirestore(firebaseApp).collection(collectionPath);
+export const getCollection = (collectionPath: string) => collection(getFirestore(), collectionPath);
 
 export const useCollection = (collectionPath: string, includeMetadataChanges = false) =>
 	!collectionPath
@@ -125,47 +128,47 @@ export const useCollectionDataOnce = (collectionPath: string, includeMetadataCha
 		? [undefined, false, new Error('useCollectionDataOnce: collectionPath not specified')]
 		: FirebaseFirestore.useCollectionDataOnce(getCollection(collectionPath));
 
-// @ts-expect-error
-export const getDocument = (documentPath: string) => getFirestore().doc(documentPath);
+export const getDocument = async (documentPath: string) => {
+	return await getDoc(doc(getFirestore(), documentPath))
+}
 
 export const useDocument = (documentPath: string, includeMetadataChanges = false) =>
 	!documentPath
 		? [undefined, false, new Error('useDocument: documentPath was not specified')]
-		: FirebaseFirestore.useDocument(getDocument(documentPath), {
+		: FirebaseFirestore.useDocument(doc(getFirestore(), documentPath), {
 				snapshotListenOptions: { includeMetadataChanges },
 		  });
 
 export const useDocumentOnce = (documentPath: string, includeMetadataChanges = false) =>
 	!documentPath
 		? [undefined, false, new Error('useDocumentOnce: documentPath was not specified')]
-		: FirebaseFirestore.useDocumentOnce(getDocument(documentPath));
+		: FirebaseFirestore.useDocumentOnce(doc(getFirestore(), documentPath));
 
 export const useDocumentData = (documentPath: string, includeMetadataChanges = false) =>
 	!documentPath
 		? [undefined, false, new Error('useDocumentData: documentPath was not specified')]
-		: FirebaseFirestore.useDocumentData(getDocument(documentPath), {
+		: FirebaseFirestore.useDocumentData(doc(getFirestore(), documentPath), {
 				snapshotListenOptions: { includeMetadataChanges },
 		  });
 
 export const useDocumentDataOnce = (documentPath: string, includeMetadataChanges = false) =>
 	!documentPath
 		? [undefined, false, new Error('useDocument: documentPath was not specified')]
-		: FirebaseFirestore.useDocumentDataOnce(getDocument(documentPath));
+		: FirebaseFirestore.useDocumentDataOnce(doc(getFirestore(), documentPath));
 
 export const getData = (
-	querySnapshot: QuerySnapshot<DocumentData>,
-	orderBy?: string,
+	queryDocumentData: Query,
+	order?: string,
 	length?: number,
 	firstItem?: any
 ) => {
-	// @ts-expect-error
-	if (!orderBy) return querySnapshot.query.get();
-	// @ts-expect-error
-	else if (!length) return querySnapshot.query.orderBy(orderBy).get();
-	// @ts-expect-error
-	else if (!firstItem) return querySnapshot.query.orderBy(orderBy).limitToLast(length).get();
-	// @ts-expect-error
-	else return querySnapshot.query.orderBy(orderBy).limitToLast(length).startAt(firstItem).get();
+	const constraints = [] as QueryConstraint[]
+	if (order) constraints.push(orderBy(order))
+	if (length) constraints.push(limitToLast(length))
+	if (firstItem) constraints.push(startAt(firstItem))
+	
+	const docsQuery = query(queryDocumentData, ...constraints);
+	return getDocs(docsQuery);
 };
 
 export const getDocumentsDataWithId = (querySnapshot: QuerySnapshot<DocumentData>) => {
@@ -179,39 +182,13 @@ export const getDocumentsDataWithId = (querySnapshot: QuerySnapshot<DocumentData
 	return docs;
 };
 
-export const collectionContains = async (collection: string, docId: string) => {
-	const firestore = getFirestore(firebaseApp);
-	// @ts-expect-error
-	return await firestore.collection(collection).doc('ABC').get();
+export const collectionContains = async (collectionName: string, docId: string) => {		
+	return (await getDoc(doc(getFirestore(), collectionName))).exists
 };
 
-// export async function signInWithGoogleAsync() {
-// 	//logOutAsync({ accessToken, iosClientId, androidClientId, iosStandaloneAppClientId, androidStandaloneAppClientId }): Promise<any>
-
-// 	if (Platform.OS === 'web') {
-// 		// try {
-// 		// 	const result = await Google.logInAsync({
-// 		// 		behavior: 'web',
-// 		// 		androidClientId,
-// 		// 		iosClientId,
-// 		// 		scopes: ['profile', 'email'],
-// 		// 	});
-// 		// 	if (result.type === 'success') {
-// 		// 		const { idToken } = result as LoginSuccess;
-// 		// 		let credential = GoogleAuthProvider.credential(idToken);
-// 		// 		return signInWithCredential(firebaseAuth, credential);
-// 		// 	}
-// 		// } catch (error) {
-// 		// 	console.error(error);
-// 		// }
-// 	} else {
-// 		// // Get the users ID token
-// 		// const { idToken } = await GoogleSignin.signIn();
-
-// 		// // Create a Google credential with the token
-// 		// const googleCredential = GoogleAuthProvider.credential(idToken);
-
-// 		// // Sign-in the user with the credential
-// 		// return signInWithCredential(firebaseAuth, googleCredential);
-// 	}
-// }
+export const callFirebaseFunction = async (
+	functionName: string,
+	data: any,
+) => {
+	return httpsCallable(getFunctions(), functionName, data);
+}

@@ -38,8 +38,7 @@ export default function _<T>({
     const { activeTheme } = useContext(ScreenContext)
 
     const fetchData = () => {
-        const querySnapshot = snapshot as QuerySnapshot<DocumentData>
-        getData(querySnapshot, orderBy, limitLength)
+        getData(snapshot, orderBy, limitLength)
             .then((documentRef) => {
                 // @ts-ignore
                 setMessages(getDocumentsDataWithId(documentRef))

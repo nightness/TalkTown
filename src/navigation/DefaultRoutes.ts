@@ -36,13 +36,13 @@ export const initialNavigationElements: NavigationElements = [
     //     initialParams: memberWallParams,
     //     depth: 0,
     // },
-    // {
-    //     label: 'Messages',
-    //     routeName: 'Messages',
-    //     component: PrivateMessenger,
-    //     initialParams: messagesParams,
-    //     depth: 0,
-    // },
+    {
+        label: 'Messages',
+        routeName: 'Messages',
+        component: PrivateMessenger,
+        initialParams: messagesParams,
+        depth: 0,
+    },
     // {
     //     label: 'Group Chat',
     //     routeName: 'GroupChat',

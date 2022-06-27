@@ -10,8 +10,7 @@ import Screen from '../components/Screen'
 import Picker, { PickerItem } from '../components/Picker'
 import FirestoreCollectionView from '../database/firebase/FirestoreCollectionView'
 import { Styles } from '../app/Styles'
-import { DocumentData, QuerySnapshot, useCollection, callFirebaseFunction } from '../database/firebase'
-import { FirebaseContext } from '../database/firebase/FirebaseContext'
+import { DocumentData, QuerySnapshot, useCollection, callFirebaseFunction, FirebaseContext } from '@database/firebase'
 import Message from './Message'
 import {
     NativeSyntheticEvent,
@@ -87,7 +86,7 @@ export default ({ navigation }: Props) => {
                 console.log(data)
             }
             textInput.current?.focus()
-        }).catch((error) => {
+        }).catch((error: any) => {
             console.error(error)
         })
     }

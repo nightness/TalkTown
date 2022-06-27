@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Platform } from 'react-native'
 import { StackNavigationProp } from '@react-navigation/stack'
-import { WebView } from '../components'
-import Screen from '../components/Screen'
+import { Screen, WebView } from '@components'
 
 interface Props {
     navigation: StackNavigationProp<any, string>
@@ -17,14 +16,11 @@ export default ({ navigation }: Props) => {
 
     // Sources...
     const source = (Platform.OS === 'web') ? { html, baseUrl: '' } :
-        { uri: 'https://cloud-lightning.web.app/WebRTC.html', baseUrl: '' }
-    // const source = { uri: 'file:///android_asset/WebRTC.html' } // For Android, but problem... With Expo Go, it's Expo Go's asset folder
-    // const source = { uri: 'https://cloud-lightning.web.app/WebRTC.html', baseUrl: 'https://cloud-lightning.web.app' }
+        { uri: 'https://talktown.live/WebRTC.html', baseUrl: '' }
 
     useEffect(() => {
         if (webView !== undefined) {
             setIsLoading(false)
-            //console.log()
         }
     }, [webView])
 
