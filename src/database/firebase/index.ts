@@ -25,12 +25,6 @@ if (getApps().length === 0) {
 	firebaseApp = getApp();
 }
 
-// GoogleSignin.configure({
-// 	iosClientId: '333769461160-rpiochl8sm6fhpln0q5sshu2ec84nbl0.apps.googleusercontent.com',
-// 	// NOTE: This is actually the android client ID, that might be an issue, get webClientId from Robert
-// 	webClientId: '333769461160-edmg5ua5hfvr8ilgs3peeas85lan0u8c.apps.googleusercontent.com',
-// });
-
 export {
 	FirebaseContext,
 	FirebaseProvider,
@@ -65,8 +59,6 @@ export const androidClientId = '334341014853-s5d61fcm0lprsmnaehjasurhn8iq3ejr.ap
 export const expoClientId = '334341014853-uf9jrn1gh3scc8n22f6hlhi0h4k6a6rs.apps.googleusercontent.com';
 export const iosClientId = '334341014853-13psf2i5bu5fi03md6040fn62adjfvpr.apps.googleusercontent.com';
 export const webClientId = '334341014853-8n0qc95472vgj6gfla636id20palfp63.apps.googleusercontent.com';
-
-// https://tvpal-db.firebaseapp.com/__/auth/handler
 
 export const clientIds = {
 	androidClientId,
