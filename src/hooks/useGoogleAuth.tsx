@@ -18,7 +18,7 @@ const authOptions = {
 const useGoogleAuth = () => {
 	const [isAuthenticating, setIsAuthenticating] = useState(false);
 	const [errorMessage, setErrorMessage] = useState<string>();
-	const webSignIn = useSignIn();
+	const webSignIn = signInWithPopup; // useSignIn();
 
 	if (Constants.appOwnership === 'expo' && Platform.OS === 'android') {
 		// Works with Expo GO (for managed)
