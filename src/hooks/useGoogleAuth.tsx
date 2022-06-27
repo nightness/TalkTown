@@ -8,6 +8,7 @@ import { getAuth, GoogleAuthProvider, signInWithCredential, signInWithRedirect, 
 import { clientIds } from '../database/firebase';
 
 // Redirect's fuck up debugging authentication, use popup's for __DEV__
+// Maybe because it requires third-party cookies? (guess)
 const useSignIn = () => __DEV__ ? signInWithPopup : signInWithRedirect;
 
 const authOptions = {
