@@ -1,8 +1,6 @@
 <!-- 
-
     Using as proof of concept, for using WebView to have WebRTC support in Expo apps    
-    Original from Jeff Delaney. https://github.com/fireship-io/webrtc-firebase-demo
-
+    Although modified, the original JS is from Jeff Delaney. https://github.com/fireship-io/webrtc-firebase-demo
 -->
 <!DOCTYPE html>
 <html
@@ -106,6 +104,7 @@
 		<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-functions.js"></script>
 
 		<script type="module">
+			console.log(globalThis)
 			const firebaseConfig = {
 				// 	apiKey: 'Your API Key',
 				// 	authDomain: 'Your Auth Domain',

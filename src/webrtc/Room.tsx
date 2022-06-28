@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Platform } from 'react-native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { Screen, WebView } from '@components'
+import { firebaseConfig } from '../../private/FirebaseAuth'
 
 interface Props {
     navigation: StackNavigationProp<any, string>
@@ -36,6 +37,12 @@ export default ({ navigation }: Props) => {
                 allowsFullscreenVideo={true}
                 allowsInlineMediaPlayback={true}
                 bounces={false}
+                javaScriptEnabled={true}
+                injectedJavaScript={`
+                    console.log('Injected JavaScript');
+                    globalThis.firebaseAuth = ${{...firebaseConfig}}
+                    global.firebaseAuth = ${{...firebaseConfig}}
+                `}
                 mediaPlaybackRequiresUserAction={false}
                 source={source}
                 onError={({ nativeEvent }: any) => {
