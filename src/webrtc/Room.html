@@ -104,7 +104,7 @@
 		<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-functions.js"></script>
 
 		<script type="module">
-			const firebaseConfig = {FIREBASE_CONFIG};
+			const firebaseConfig = {FIREBASE_CONFIG}; // This is replaced before passing to the WebView
 
 			if (!firebase.apps.length) {
 				firebase.initializeApp(firebaseConfig);
