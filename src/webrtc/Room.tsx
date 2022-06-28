@@ -25,9 +25,9 @@ export default ({ navigation }: Props) => {
         }
     }, [webView])
 
-    useEffect(() => {
-        console.info(`WebView is ${isLoading ? '' : 'not'} loading`)
-    }, [isLoading])
+    // useEffect(() => {
+    //     console.info(`WebView is ${isLoading ? '' : 'not'} loading`)
+    // }, [isLoading])
 
     return (
         <Screen navigation={navigation} title="Video Chat">
