@@ -32,6 +32,15 @@ export const firebaseConfig = {
     appId: '[APP ID]',
     measurementId: '[MEASUREMENT ID]',
 }
+
+// These can be found in google console under the API Credentials OAUTH2 section.
+// You will have to create the expoClientID manually (it's a web credential type)...
+//      Add URL: https://auth.expo.io
+//      Authorized Redirects: https://auth.expo.io/@your-expo-username/your-project-name
+export const androidClientId = '[ANDROID CLIENT ID]';
+export const expoClientId = '[EXPO CLIENT ID]';
+export const iosClientId = '[IOS CLIENT ID]';
+export const webClientId = '[WEB CLIENT ID]';
 ```
 
 7. From the CLI, in the project folder, type `firebase init` and setup hosting (This entire setup is optional if you just want to run locally)
