@@ -8,7 +8,7 @@ interface Props {
     navigation: StackNavigationProp<any, string>
 }
 
-// The HTML Source for the WebView
+// The HTML Source for the WebView, and inject the Firebase config
 const html = require('./Room.html').replace('{FIREBASE_CONFIG}', JSON.stringify(firebaseConfig));
 
 export default ({ navigation }: Props) => {
