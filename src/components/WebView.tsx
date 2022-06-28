@@ -4,13 +4,13 @@ import { Platform } from 'react-native'
 import { WebView as WebViewWeb } from 'react-native-web-webview'
 import { WebView, WebViewProps } from 'react-native-webview'
 
-export default (props: WebViewProps) => {
+export default React.forwardRef((props: WebViewProps, ref: any) => {
     if (Platform.OS === 'web')
         return (
-            <WebViewWeb {...props} />
+            <WebViewWeb ref={ref} {...props} />
         )
     return (
         // @ts-ignore
-        <WebView {...props} />
+        <WebView ref={ref} {...props} />
     )
-}
+});

@@ -42,9 +42,7 @@ export const expoClientId = '[EXPO CLIENT ID]';
 export const iosClientId = '[IOS CLIENT ID]';
 export const webClientId = '[WEB CLIENT ID]';
 ```
-7. Add your firebase config to the src/webrtc/Room.html file.
-
-8. From the CLI, in the project folder, type `firebase init` and setup hosting (This entire setup is optional if you just want to run locally)
+7. From the CLI, in the project folder, type `firebase init` and setup hosting (This entire setup is optional if you just want to run locally)
 
 ## Startup
 

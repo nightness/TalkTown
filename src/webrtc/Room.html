@@ -105,15 +105,7 @@
 
 		<script type="module">
 			console.log(globalThis)
-			const firebaseConfig = {
-				// 	apiKey: 'Your API Key',
-				// 	authDomain: 'Your Auth Domain',
-				// 	projectId: 'Your Project ID',
-				// 	storageBucket: 'Your Storage Bucket',
-				// 	messagingSenderId: 'Your Messaging Sender ID',
-				// 	appId: 'Your App ID',
-				// 	measurementId: 'Your Measurement ID',
-			};
+			const firebaseConfig = {FIREBASE_CONFIG};
 
 			if (!firebase.apps.length) {
 				firebase.initializeApp(firebaseConfig);

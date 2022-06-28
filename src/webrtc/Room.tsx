@@ -9,7 +9,7 @@ interface Props {
 }
 
 // The HTML Source for the WebView
-const html = require('./Room.html');
+const html = require('./Room.html').replace('{FIREBASE_CONFIG}', JSON.stringify(firebaseConfig));
 
 export default ({ navigation }: Props) => {
     const [isLoading, setIsLoading] = useState(true)
@@ -31,18 +31,12 @@ export default ({ navigation }: Props) => {
 
     return (
         <Screen navigation={navigation} title="Video Chat">
-            <WebView
+            <WebView                
                 style={{ flex: 1, backgroundColor: 'transparent' }}
                 originWhitelist={['*']}
                 allowsFullscreenVideo={true}
                 allowsInlineMediaPlayback={true}
                 bounces={false}
-                javaScriptEnabled={true}
-                injectedJavaScript={`
-                    console.log('Injected JavaScript');
-                    globalThis.firebaseAuth = ${{...firebaseConfig}}
-                    global.firebaseAuth = ${{...firebaseConfig}}
-                `}
                 mediaPlaybackRequiresUserAction={false}
                 source={source}
                 onError={({ nativeEvent }: any) => {
