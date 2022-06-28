@@ -58,11 +58,7 @@ export type {
 };
 export { GoogleAuthProvider, getAuth, getFirestore };
 
-
-export const androidClientId = '334341014853-s5d61fcm0lprsmnaehjasurhn8iq3ejr.apps.googleusercontent.com';
-export const expoClientId = '334341014853-uf9jrn1gh3scc8n22f6hlhi0h4k6a6rs.apps.googleusercontent.com';
-export const iosClientId = '334341014853-13psf2i5bu5fi03md6040fn62adjfvpr.apps.googleusercontent.com';
-export const webClientId = '334341014853-8n0qc95472vgj6gfla636id20palfp63.apps.googleusercontent.com';
+import { androidClientId, expoClientId, iosClientId, webClientId } from '../../../private/FirebaseAuth';
 
 export const clientIds = {
 	androidClientId,
@@ -101,8 +97,6 @@ export const getCurrentTimeStamp = () => serverTimestamp();
 export const getCurrentUser = () => firebaseAuth.currentUser;
 
 export const useAuthState = () => FirebaseAuth.useAuthState(getAuth(getApp()));
-
-
 
 export const getCollection = (collectionPath: string) => collection(getFirestore(), collectionPath);
 
